@@ -34,6 +34,11 @@ public struct CoreDataAttributeDescription {
         attribute.attributeType = attributeType
         if attributeType == .transformableAttributeType {
             attribute.attributeValueClassName = customClassName
+            var transformerName = "NSSecureUnarchiveFromData"
+            if let customClassName = customClassName {
+                transformerName = "\(customClassName)Transformer"
+            }
+            attribute.valueTransformerName = transformerName
         }
         attribute.isOptional = isOptional
         attribute.defaultValue = defaultValue
